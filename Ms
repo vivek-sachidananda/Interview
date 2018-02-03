@@ -1,0 +1,23 @@
+bool findCheese(IMaze
+& iMaze)
+{
+  return findCheeseRecursive(iMaze, Left);
+}
+
+bool findCheeseRecursive(IMaze& iMaze, Direction& iDirection)
+{
+  if (iMaze.tryMouseMove(iDirection) && iMaze.isFoundCheese())
+    return true;
+   
+   if (findCheeseRecursive(iMaze, Left) == true)
+    return true;
+    
+       if (findCheeseRecursive(iMaze, Right) == true)
+    return true;
+    
+       if (findCheeseRecursive(iMaze, Up) == true)
+    return true;
+    
+       if (findCheeseRecursive(iMaze, Down) == true)
+    return true;
+}
