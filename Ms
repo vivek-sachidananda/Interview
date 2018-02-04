@@ -1,5 +1,4 @@
-bool findCheese(IMaze
-& iMaze)
+bool findCheese(IMaze& iMaze)
 {
   return findCheeseRecursive(iMaze, Left);
 }
