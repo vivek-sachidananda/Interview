@@ -9,6 +9,7 @@
 #include "algorithm"
 #include "stack"
 #include <limits>
+#include "vector"
 
 bool isUniqueString(std::string iString)
 {

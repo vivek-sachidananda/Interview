@@ -7,42 +7,42 @@ bool tryMouseMove(Direction& iDir)
 {
   switch (iDir)
   {
-    case Left : 
+    case Left :
               if (_x > 0)
                 _x -= 1;
               else
                 return false;
               break;
-    case Right : 
+    case Right :
                 if (_x < (_width - 1))
                   _x += 1;
                 else
                   return false;
                 break;
-    case Up : 
+    case Up :
               if (_y > 0)
                 _y -= 1;
               else
                 return false;
               break;
-    case Down : 
+    case Down :
               if (_y < (_height - 1))
                 _y -= 1;
               else
                 return false;
               break;
   }
-  
+
   // There can be a possible move, as its within the maze bounds
   {
     // Check if we have hit a wall or obstacle
-    if (_maze[_x][_y] == "#" || _maze[_x][_y] == "|" || _wasHere[_x][_y]) 
+    if (_maze[_x][_y] == "#" || _maze[_x][_y] == "|" || _wasHere[_x][_y])
       return false;
-    
+
     //We have a empty space for a move
     _wasHere[_x][_y] = true;
   }
-  
+
   return true;
 }
 
@@ -60,17 +60,17 @@ bool findCheeseRecursiveModified(IMaze& iMaze, Direction& iDirection)
   {
      if (iMaze.tryMouseMove(Left) && findCheeseRecursive(iMaze, Left) == true)
       return true;
-      
+
      if (iMaze.tryMouseMove(Right) && findCheeseRecursive(iMaze, Right) == true)
       return true;
-      
+
      if (iMaze.tryMouseMove(Up) && findCheeseRecursive(iMaze, Up) == true)
       return true;
 
      if (iMaze.tryMouseMove(Down) && findCheeseRecursive(iMaze, Down) == true)
       return true;
   }
-   
+
     return false;
 }
 
@@ -78,18 +78,18 @@ bool findCheeseRecursive(IMaze& iMaze, Direction& iDirection)
 {
   if (iMaze.tryMouseMove(iDirection) && iMaze.isFoundCheese())
     return true;
-   
+
    if (findCheeseRecursive(iMaze, Left) == true)
     return true;
-    
+
    if (findCheeseRecursive(iMaze, Right) == true)
     return true;
-    
+
    if (findCheeseRecursive(iMaze, Up) == true)
     return true;
-    
+
    if (findCheeseRecursive(iMaze, Down) == true)
     return true;
-   
+
     return false;
 }
